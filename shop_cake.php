@@ -41,8 +41,9 @@ if ( isset( $_POST['choice'] ) )
 </head>
 <body>
 <?php readfile("lib/header.html"); ?>
-
-<?php echo $_SESSION[$ITEM] . " $ITEM <br>"; ?>
+<center>
+<img width='200' src='images/cake.jpg'><br>
+<?php echo $_SESSION[$ITEM]." ".$ITEM."s in your cart. <br><br>"; ?>
 
 <form method='POST'>
 <input type='submit' name='choice' value='Add 1'>
@@ -50,7 +51,7 @@ if ( isset( $_POST['choice'] ) )
 <input type='submit' name='choice' value='Remove 1'>
 <input type='submit' name='choice' value='Remove All'>
 </form>
-
+</center>
 <?php require("lib/footer.php"); ?>
 </body>
 </html>

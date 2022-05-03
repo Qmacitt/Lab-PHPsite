@@ -8,7 +8,7 @@ require("lib/phpfunctions.php");
 session_start();
 validate_or_bounce();
 
-$ITEM = 'XXX';
+$ITEM = 'XXXXXXXXXXXXXXXX';
 
 if (! isset( $_SESSION[$ITEM] ))
 {
@@ -41,8 +41,8 @@ if ( isset( $_POST['choice'] ) )
 </head>
 <body>
 <?php readfile("lib/header.html"); ?>
-
-<?php echo $_SESSION[$ITEM] . " $ITEM <br>"; ?>
+<center>
+<?php echo $_SESSION[$ITEM] . " $ITEM s in your cart:) <br>"; ?>
 
 <form method='POST'>
 <input type='submit' name='choice' value='Add 1'>
@@ -50,7 +50,7 @@ if ( isset( $_POST['choice'] ) )
 <input type='submit' name='choice' value='Remove 1'>
 <input type='submit' name='choice' value='Remove All'>
 </form>
-
+</center>
 <?php require("lib/footer.php"); ?>
 </body>
 </html>
