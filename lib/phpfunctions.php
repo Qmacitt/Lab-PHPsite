@@ -28,7 +28,7 @@ function getPost($key)
     }
 }
 
-function password_verify($username, $password)
+function validate_login($username, $password)
 {
     if ($username=="root" && $password=="pass123")
     {

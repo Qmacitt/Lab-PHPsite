@@ -17,7 +17,7 @@ if (isset($_POST['choice']))
 {
     if ($_POST['choice'] == 'Login')
     {
-	      if (password_verify($username, $password)){ 
+	      if (validate_login($username, $password)){ 
 	          $_SESSION['username'] = $username;
 	          header('Location: welcome.php');
 	      }else{
@@ -45,7 +45,7 @@ Password: pass123<br>
 <tr><td>Password: </td><td><input type='password' name='pass_word' value='<?php showPost("pass_word");?>'> </td></tr>
 <tr><td></td></td></tr>
 <tr><td></td></td></tr>
-<tr><td></td><td align=right><input type='submit' name='choice' value='Login'></td></tr>
+<tr><td><input type='submit' name='choice' value='Sign up'></td><td align=right><input type='submit' name='choice' value='Login'></td></tr>
 </table>
 </div>
 
