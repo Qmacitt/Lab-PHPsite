@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <!--  I honor Parkland core values by affirming that I have followed all academic integrity guidelines for this work.
 Qing Ma CSC-155-201H_2022SP -->
 
-<html>
+
 <head>
 <title>PHP Shopping Site</title>
 
@@ -24,6 +25,11 @@ if (isset($_POST['choice']))
 	          $message = "Invalid username or password!";
         }
     }
+    if ($_POST['choice'] == 'Sign up')
+    {
+	      header('Location: newuser.php');
+    }
+    
 }  
 
 ?>
@@ -48,7 +54,7 @@ Password: pass123<br>
 <tr><td><input type='submit' name='choice' value='Sign up'></td><td align=right><input type='submit' name='choice' value='Login'></td></tr>
 </table>
 </div>
-
+</form>
 <hr>
 <p><?php echo $message;?></p>
 
