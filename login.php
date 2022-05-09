@@ -10,6 +10,8 @@ Qing Ma CSC-155-201H_2022SP -->
 require ("lib/phpfunctions.php");
 session_start();
 
+$conn = connectDB();
+
 $message="";
 $username = getPost('user_name');
 $password = getPost('pass_word');
@@ -18,7 +20,7 @@ if (isset($_POST['choice']))
 {
     if ($_POST['choice'] == 'Login')
     {
-	      if (validate_login($username, $password)){ 
+	      if (validate_login($conn, $username, $password)){ 
 	          $_SESSION['username'] = $username;
 	          header('Location: welcome.php');
 	      }else{

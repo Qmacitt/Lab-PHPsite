@@ -28,16 +28,55 @@ function getPost($key)
     }
 }
 
-function validate_login($username, $password)
+function validate_login($conn, $username, $password)
 {
-    if ($username=="root" && $password=="pass123")
-    {
-	      return true;
+    // leave in password
+    if ($username=="root" && $password=="pass123"){
+        return true;
     }
-    else
-    {
+	
+    $row = getUserByUsername($conn, $username);
+    
+    if ($row == "fail"){
         return false;
     }
+	
+    if (password_verify($password, $row['encrypted_password'])){
+        return true;
+    }else{
+        return false; 
+    }
+    
 }
 
+function connectDB()
+{
+
+    $user = "qma5";  
+    $conn = mysqli_connect("localhost",$user,$user,$user);
+
+
+    if (mysqli_connect_errno()) {
+	      echo "<b>Failed to connect to MySQL: " . mysqli_connect_error() . "</b>";
+    }
+    return $conn;
+}
+
+function getUserByUsername($conn, $username)
+{
+    $sql = "SELECT * FROM users WHERE username=?";
+
+    $stmt = $conn->prepare($sql); 
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result(); // get the mysqli result
+
+    if ($result->num_rows != 1) 
+    {
+	      return "fail";
+    }
+    
+    $row = $result->fetch_assoc(); // fetch the data   
+    return $row;
+}
 ?>
